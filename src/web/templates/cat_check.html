@@ -9,77 +9,77 @@
 <nav class="navbar navbar-light bg-light">
 
     <a class="navbar-brand" href="#">CAT - Corpus of Academic Texts</a> 
-    <a class="nav-link" href="#">Словарь коллокаций</a>
+    <a class="nav-link" href="#">РЎР»РѕРІР°СЂСЊ РєРѕР»Р»РѕРєР°С†РёР№</a>
     <form class="form-inline">
-        <input class="form-control" type="search" placeholder="Поиск по корпусу" aria-label="Search" id="search">
-        <button class="btn-outline-success" type="submit">Искать</button>
+        <input class="form-control" type="search" placeholder="РџРѕРёСЃРє РїРѕ РєРѕСЂРїСѓСЃСѓ" aria-label="Search" id="search">
+        <button class="btn-outline-success" type="submit">РСЃРєР°С‚СЊ</button>
     </form>
 </nav>
 <link rel="stylesheet" type="text/css" href="css/check_css.css">
 <div class="check1">
-  <h2>Проверка текста на академичность</h2>
-  <p> Этот инструмент позволит вам узнать насколько ваша работа соотвествует нормам академического письма (научному стилю). Мы сравним загруженный текст с текстами корпуса, а так же выделим места, в которых возможны отступления от академической нормы. </p>
+  <h2>РџСЂРѕРІРµСЂРєР° С‚РµРєСЃС‚Р° РЅР° Р°РєР°РґРµРјРёС‡РЅРѕСЃС‚СЊ</h2>
+  <p> Р­С‚РѕС‚ РёРЅСЃС‚СЂСѓРјРµРЅС‚ РїРѕР·РІРѕР»РёС‚ РІР°Рј СѓР·РЅР°С‚СЊ РЅР°СЃРєРѕР»СЊРєРѕ РІР°С€Р° СЂР°Р±РѕС‚Р° СЃРѕРѕС‚РІРµСЃС‚РІСѓРµС‚ РЅРѕСЂРјР°Рј Р°РєР°РґРµРјРёС‡РµСЃРєРѕРіРѕ РїРёСЃСЊРјР° (РЅР°СѓС‡РЅРѕРјСѓ СЃС‚РёР»СЋ). РњС‹ СЃСЂР°РІРЅРёРј Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С‚РµРєСЃС‚ СЃ С‚РµРєСЃС‚Р°РјРё РєРѕСЂРїСѓСЃР°, Р° С‚Р°Рє Р¶Рµ РІС‹РґРµР»РёРј РјРµСЃС‚Р°, РІ РєРѕС‚РѕСЂС‹С… РІРѕР·РјРѕР¶РЅС‹ РѕС‚СЃС‚СѓРїР»РµРЅРёСЏ РѕС‚ Р°РєР°РґРµРјРёС‡РµСЃРєРѕР№ РЅРѕСЂРјС‹. </p>
     <div class="check">
-      <h3>Загрузить текст:</h3>
+      <h3>Р—Р°РіСЂСѓР·РёС‚СЊ С‚РµРєСЃС‚:</h3>
         <form>
           <div class="form-group">
-            <label for="FormControlFile">Загрузите файл в формате *.pdf или *.txt</label>
+            <label for="FormControlFile">Р—Р°РіСЂСѓР·РёС‚Рµ С„Р°Р№Р» РІ С„РѕСЂРјР°С‚Рµ *.pdf РёР»Рё *.txt</label>
             <br><br>
             <input type="file" class="form-control-file" id="FormControlFile" type="submit">
           </div>
-        <p>или введите текст:</p>
-        <textarea class="form-control" rows="5" cols="60" placeholder="Введите текст, который вы хотите проверить"></textarea>
+        <p>РёР»Рё РІРІРµРґРёС‚Рµ С‚РµРєСЃС‚:</p>
+        <textarea class="form-control" rows="5" cols="60" placeholder="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚, РєРѕС‚РѕСЂС‹Р№ РІС‹ С…РѕС‚РёС‚Рµ РїСЂРѕРІРµСЂРёС‚СЊ"></textarea>
        </form>
     </div>
     <div class="check">
-        <h3>Выберите типы ошибок, на которые вы хотите проверить свой текст:</h3>
+        <h3>Р’С‹Р±РµСЂРёС‚Рµ С‚РёРїС‹ РѕС€РёР±РѕРє, РЅР° РєРѕС‚РѕСЂС‹Рµ РІС‹ С…РѕС‚РёС‚Рµ РїСЂРѕРІРµСЂРёС‚СЊ СЃРІРѕР№ С‚РµРєСЃС‚:</h3>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="Check1" checked>
             <label class="form-check-label" for="Check1">
-                Длинные цепочки родительных падежей
+                Р”Р»РёРЅРЅС‹Рµ С†РµРїРѕС‡РєРё СЂРѕРґРёС‚РµР»СЊРЅС‹С… РїР°РґРµР¶РµР№
             </label><br>
-            <p class="comment">Пример: "Наблюдать продолжение изменения качества содержания текста".</p>
+            <p class="comment">РџСЂРёРјРµСЂ: "РќР°Р±Р»СЋРґР°С‚СЊ РїСЂРѕРґРѕР»Р¶РµРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ РєР°С‡РµСЃС‚РІР° СЃРѕРґРµСЂР¶Р°РЅРёСЏ С‚РµРєСЃС‚Р°".</p>
             <input class="form-check-input" type="checkbox" value="" id="Check2" checked>
             <label class="form-check-label" for="Check2">
-                Ошибки в сравнительной степени
+                РћС€РёР±РєРё РІ СЃСЂР°РІРЅРёС‚РµР»СЊРЅРѕР№ СЃС‚РµРїРµРЅРё
             </label><br>
-          <p class="comment">Пример: "Более красивее".</p>
+          <p class="comment">РџСЂРёРјРµСЂ: "Р‘РѕР»РµРµ РєСЂР°СЃРёРІРµРµ".</p>
             <input class="form-check-input" type="checkbox" value="" id="Check3" checked>
-            <label class="form-check-label" for="Check3" title="Силлепсис">
-                Зевгма
+            <label class="form-check-label" for="Check3" title="РЎРёР»Р»РµРїСЃРёСЃ">
+                Р—РµРІРіРјР°
             </label><br>
-            <p class="comment">Пример: "Шёл дождь и два студента".</p>
+            <p class="comment">РџСЂРёРјРµСЂ: "РЁС‘Р» РґРѕР¶РґСЊ Рё РґРІР° СЃС‚СѓРґРµРЅС‚Р°".</p>
             <input class="form-check-input" type="checkbox" value="" id="Check4" checked>
             <label class="form-check-label" for="Check4">
-                Ошибки в наклонении глагола
+                РћС€РёР±РєРё РІ РЅР°РєР»РѕРЅРµРЅРёРё РіР»Р°РіРѕР»Р°
             </label><br>
-            <p class="comment">В текстах научного стиля следует избегать глаголов в повелительном и сослагательном наклонении.</p>
+            <p class="comment">Р’ С‚РµРєСЃС‚Р°С… РЅР°СѓС‡РЅРѕРіРѕ СЃС‚РёР»СЏ СЃР»РµРґСѓРµС‚ РёР·Р±РµРіР°С‚СЊ РіР»Р°РіРѕР»РѕРІ РІ РїРѕРІРµР»РёС‚РµР»СЊРЅРѕРј Рё СЃРѕСЃР»Р°РіР°С‚РµР»СЊРЅРѕРј РЅР°РєР»РѕРЅРµРЅРёРё.</p>
             <input class="form-check-input" type="checkbox" value="" id="Check5" checked>
             <label class="form-check-label" for="Check5">
-                Ошибки в личных местоимениях
+                РћС€РёР±РєРё РІ Р»РёС‡РЅС‹С… РјРµСЃС‚РѕРёРјРµРЅРёСЏС…
             </label><br>
-            <p class="comment">"Я" и "мы" в одном предложении.</p>
+            <p class="comment">"РЇ" Рё "РјС‹" РІ РѕРґРЅРѕРј РїСЂРµРґР»РѕР¶РµРЅРёРё.</p>
             <input class="form-check-input" type="checkbox" value="" id="Check6" checked>
             <label class="form-check-label" for="Check6">
-                Cлова неакадемического стиля
+                CР»РѕРІР° РЅРµР°РєР°РґРµРјРёС‡РµСЃРєРѕРіРѕ СЃС‚РёР»СЏ
             </label><br>
-            <p class="comment"> Пример: "Усёра", "бодуна", "подпитие".</p>
+            <p class="comment"> РџСЂРёРјРµСЂ: "РЈСЃС‘СЂР°", "Р±РѕРґСѓРЅР°", "РїРѕРґРїРёС‚РёРµ".</p>
         </div>
     </div>
     <div class="check">
-        <h3>Выбрать предметную область (если не выбрана, будет определена автоматически):</h3>
+        <h3>Р’С‹Р±СЂР°С‚СЊ РїСЂРµРґРјРµС‚РЅСѓСЋ РѕР±Р»Р°СЃС‚СЊ (РµСЃР»Рё РЅРµ РІС‹Р±СЂР°РЅР°, Р±СѓРґРµС‚ РѕРїСЂРµРґРµР»РµРЅР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё):</h3>
         <select class="form-control">
-            <option>Предметная область не выбрана</option>
-            <option>Лингвистика и прикладная (компьютерная) лингвистика</option>
-            <option>Политология и межународные отношения</option>
-            <option>Психология и педагогика</option>
-            <option>Социология</option>
-            <option>Экономика</option>
-            <option>Юриспруденция</option>
+            <option>РџСЂРµРґРјРµС‚РЅР°СЏ РѕР±Р»Р°СЃС‚СЊ РЅРµ РІС‹Р±СЂР°РЅР°</option>
+            <option>Р›РёРЅРіРІРёСЃС‚РёРєР° Рё РїСЂРёРєР»Р°РґРЅР°СЏ (РєРѕРјРїСЊСЋС‚РµСЂРЅР°СЏ) Р»РёРЅРіРІРёСЃС‚РёРєР°</option>
+            <option>РџРѕР»РёС‚РѕР»РѕРіРёСЏ Рё РјРµР¶СѓРЅР°СЂРѕРґРЅС‹Рµ РѕС‚РЅРѕС€РµРЅРёСЏ</option>
+            <option>РџСЃРёС…РѕР»РѕРіРёСЏ Рё РїРµРґР°РіРѕРіРёРєР°</option>
+            <option>РЎРѕС†РёРѕР»РѕРіРёСЏ</option>
+            <option>Р­РєРѕРЅРѕРјРёРєР°</option>
+            <option>Р®СЂРёСЃРїСЂСѓРґРµРЅС†РёСЏ</option>
         </select>
     </div>
     <div class="check-button">
-        <button type="submit" class="btn btn-primary btn-lg" >Проверить</button>
+        <button type="submit" class="btn btn-primary btn-lg" >РџСЂРѕРІРµСЂРёС‚СЊ</button>
     </div>
 </div>
 </body>

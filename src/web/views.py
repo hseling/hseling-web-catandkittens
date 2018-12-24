@@ -62,3 +62,11 @@ def web_upload_file(request):
     else:
         form = UploadFileForm()
     return render(request, 'main.html', {'form': form})
+
+def web_check(request):
+    return render(request, 'cat_check.html',
+                  context={})
+
+def web_collocations(request):
+    return render(request, 'cat_collocations.html',
+                  context={})

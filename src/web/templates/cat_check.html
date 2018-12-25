@@ -1,9 +1,10 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <title>CAT</title>
-    <link rel="stylesheet" type="text/css" href="../static/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{% static "static/node_modules/bootstrap/dist/css/bootstrap.css" %}">
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
@@ -15,7 +16,7 @@
         <button class="btn-outline-success" type="submit">Искать</button>
     </form>
 </nav>
-<link rel="stylesheet" type="text/css" href="css/check_css.css">
+<link rel="stylesheet" type="text/css" href=" {% static "css/check_css.css" %}">
 <div class="check1">
   <h2>Проверка текста на академичность</h2>
   <p> Этот инструмент позволит вам узнать насколько ваша работа соотвествует нормам академического письма (научному стилю). Мы сравним загруженный текст с текстами корпуса, а так же выделим места, в которых возможны отступления от академической нормы. </p>

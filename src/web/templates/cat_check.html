@@ -1,14 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CAT</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
-
-    <a class="navbar-brand" href="cat_check.html">CAT - Corpus of Academic Texts</a>
+    <a class="navbar-brand" href="index.html">CAT - Corpus of Academic Texts</a>
     <a class="nav-link" href="cat_collocations.html">Словарь коллокаций</a>
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Поиск по корпусу" aria-label="Search">
@@ -16,7 +16,7 @@
     </form>
 
 </nav>
-<link rel="stylesheet" type="text/css" href="../static/css/cat_check.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/cat_check.css' %}">
 <div class="check">
     <h3>Проверка текста на академичность</h3>
     <div class="check">
@@ -76,7 +76,7 @@
     </div>
 </div>
 </body>
-<script src="../static/jquery-3.3.1.js"></script>
-<script src="../static/bootstrap.js"></script>
-<script src="../static/main.js"></script>
+<script src="{% static 'jquery-3.3.1.js' %}"></script>
+<script src="{% static 'bootstrap.js' %}"></script>
+<script src="{% static 'main.js' %}"></script>
 </html>

@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="cat_check.html">CAT - Corpus of Academic Texts</a>
+    <a class="navbar-brand" href="index.html">CAT - Corpus of Academic Texts</a>
     <a class="nav-link" href="cat_check.html">Проверка текста на академичность</a>
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Поиск по словарю коллокаций" aria-label="Search">
@@ -17,7 +17,7 @@
     </form>
 </nav>
 <link rel="stylesheet" type="text/css" href="{% static 'css/cat_check.css' %}">
-<div class="check">
+<div class="collocations">
     <h3>Словарь коллокаций</h3>
 	<table id="collocationTable" class="table table-striped table-bordered table-hover">
 	<div class="offset-md-12 col-md-12 col-sm-12">
@@ -201,9 +201,9 @@
 	</table>
 </div>
 </body>
-<script src="{% static "jquery-3.3.1.js" %}"></script>
-<script src="{% static "bootstrap.js" %}"></script>
-<script src="{% static "dataTables.bootstrap.min.js" %}"></script>
-<script src="{% static "jquery.dataTables.min.js" %}"></script>
-<script src="{% static "main.js" %}"></script>
+<script src="{% static 'jquery-3.3.1.js' %}"></script>
+<script src="{% static 'bootstrap.js' %}"></script>
+<script src="{% static 'dataTables.bootstrap.min.js' %}"></script>
+<script src="{% static 'jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'main.js' %}"></script>
 </html>

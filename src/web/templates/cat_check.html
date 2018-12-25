@@ -1,0 +1,87 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>CAT</title>
+    <link rel="stylesheet" type="text/css" href="{% static "static/node_modules/bootstrap/dist/css/bootstrap.css" %}">
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+
+    <a class="navbar-brand" href="#">CAT - Corpus of Academic Texts</a> 
+    <a class="nav-link" href="cat_collocations.html#">Словарь коллокаций</a>
+    <form class="form-inline">
+        <input class="form-control" type="search" placeholder="Поиск по корпусу" aria-label="Search" id="search">
+        <button class="btn-outline-success" type="submit">Искать</button>
+    </form>
+</nav>
+<link rel="stylesheet" type="text/css" href=" {% static "css/check_css.css" %}">
+<div class="check1">
+  <h2>Проверка текста на академичность</h2>
+  <p> Этот инструмент позволит вам узнать насколько ваша работа соотвествует нормам академического письма (научному стилю). Мы сравним загруженный текст с текстами корпуса, а так же выделим места, в которых возможны отступления от академической нормы. </p>
+    <div class="check">
+      <h3>Загрузить текст:</h3>
+        <form>
+          <div class="form-group">
+            <label for="FormControlFile">Загрузите файл в формате *.pdf или *.txt</label>
+            <br><br>
+            <input type="file" class="form-control-file" id="FormControlFile" type="submit">
+          </div>
+        <p>или введите текст:</p>
+        <textarea class="form-control" rows="5" cols="60" placeholder="Введите текст, который вы хотите проверить"></textarea>
+       </form>
+    </div>
+    <div class="check">
+        <h3>Выберите типы ошибок, на которые вы хотите проверить свой текст:</h3>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="Check1" checked>
+            <label class="form-check-label" for="Check1">
+                Длинные цепочки родительных падежей
+            </label><br>
+            <p class="comment">Пример: "Наблюдать продолжение изменения качества содержания текста".</p>
+            <input class="form-check-input" type="checkbox" value="" id="Check2" checked>
+            <label class="form-check-label" for="Check2">
+                Ошибки в сравнительной степени
+            </label><br>
+          <p class="comment">Пример: "Более красивее".</p>
+            <input class="form-check-input" type="checkbox" value="" id="Check3" checked>
+            <label class="form-check-label" for="Check3" title="Силлепсис">
+                Зевгма
+            </label><br>
+            <p class="comment">Пример: "Шёл дождь и два студента".</p>
+            <input class="form-check-input" type="checkbox" value="" id="Check4" checked>
+            <label class="form-check-label" for="Check4">
+                Ошибки в наклонении глагола
+            </label><br>
+            <p class="comment">В текстах научного стиля следует избегать глаголов в повелительном и сослагательном наклонении.</p>
+            <input class="form-check-input" type="checkbox" value="" id="Check5" checked>
+            <label class="form-check-label" for="Check5">
+                Ошибки в личных местоимениях
+            </label><br>
+            <p class="comment">"Я" и "мы" в одном предложении.</p>
+            <input class="form-check-input" type="checkbox" value="" id="Check6" checked>
+            <label class="form-check-label" for="Check6">
+                Cлова неакадемического стиля
+            </label><br>
+            <p class="comment"> Пример: "Усёра", "бодуна", "подпитие".</p>
+        </div>
+    </div>
+    <div class="check">
+        <h3>Выбрать предметную область (если не выбрана, будет определена автоматически):</h3>
+        <select class="form-control">
+            <option>Предметная область не выбрана</option>
+            <option>Лингвистика и прикладная (компьютерная) лингвистика</option>
+            <option>Политология и межународные отношения</option>
+            <option>Психология и педагогика</option>
+            <option>Социология</option>
+            <option>Экономика</option>
+            <option>Юриспруденция</option>
+        </select>
+    </div>
+    <div class="check-button">
+        <button type="submit" class="btn btn-primary btn-lg" >Проверить</button>
+    </div>
+</div>
+</body>
+</html>

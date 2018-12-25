@@ -1,0 +1,40 @@
+.check {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.check-button {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+}
+
+.comment{
+    margin-top:2px;
+    margin-left:24px;
+    margin-bottom:10px;
+  font-style:italic;
+}
+
+.navbar-brand{
+  margin:10px;
+}
+#search{
+  margin:10px;
+  margin-right:2px;
+}
+
+body{
+  background-color:#A9E2F3;
+}
+
+.form-check{
+    border: 1px solid grey; /* Параметры границы */
+    background: #CEECF5; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+}
+
+div { 
+    font-family:serif;
+}

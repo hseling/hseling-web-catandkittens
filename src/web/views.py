@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django import forms
+import json
 
 import requests
 
-
 HSE_API_ROOT = "http://hse-api-web/"
+
 
 # Create your views here.
 def web_index(request):
@@ -53,6 +54,10 @@ class UploadFileForm(forms.Form):
     file = forms.FileField()
 
 
+class TextForm(forms.Form):
+    paste_text = forms.CharField()
+
+
 def web_upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -63,10 +68,45 @@ def web_upload_file(request):
         form = UploadFileForm()
     return render(request, 'main.html', {'form': form})
 
+
+def handle_text_to_check(t):
+    url = HSE_API_ROOT + "input_text"
+    text = {"text": t}
+    content = requests.post(url, json=json.dumps(text), headers={'content-type': 'application/json'})
+    # raise Exception("{0}".format(content.json()))
+    return content.json()['input_text']
+
+
+def handle_file_to_check(f):
+    files = {'file': f}
+    url = HSE_API_ROOT + "input_file"
+    content = requests.post(url, files=files)
+    return content.json().get('task_id')
+
+def handle_text_to_search(t):
+    url = HSE_API_ROOT + 'search_text'
+    text = {"text": t}
+    content = requests.post(url, json=json.dumps(text), headers={'content-type': 'application/json'})
+    return content.json()['found']
+
+def web_intext(request):
+    if request.method == 'POST':
+        text = handle_text_to_check(request.POST['paste_text'])
+        return JsonResponse({"text":text})
+
+
 def web_check(request):
     return render(request, 'cat_check.html',
                   context={})
 
+
 def web_collocations(request):
     return render(request, 'cat_collocations.html',
+                  context={})
+
+def web_search(request):
+    if request.method == 'POST':
+        text = handle_text_to_search(request.POST['search'])
+        return JsonResponse({"text": text})
+    return render(request, 'search.html',
                   context={})

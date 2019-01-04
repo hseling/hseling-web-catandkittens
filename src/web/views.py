@@ -83,16 +83,17 @@ def handle_file_to_check(f):
     content = requests.post(url, files=files)
     return content.json().get('task_id')
 
-def handle_text_to_search(t):
-    url = HSE_API_ROOT + 'search_text'
-    text = {"text": t}
+
+def handle_text_to_search(t, url, count):
+    text = {"text": t, "count": count}
     content = requests.post(url, json=json.dumps(text), headers={'content-type': 'application/json'})
     return content.json()['found']
+
 
 def web_intext(request):
     if request.method == 'POST':
         text = handle_text_to_check(request.POST['paste_text'])
-        return JsonResponse({"text":text})
+        return JsonResponse({"text": text})
 
 
 def web_check(request):
@@ -104,9 +105,26 @@ def web_collocations(request):
     return render(request, 'cat_collocations.html',
                   context={})
 
+
 def web_search(request):
     if request.method == 'POST':
-        text = handle_text_to_search(request.POST['search'])
+        text = handle_text_to_search(request.POST['search'], HSE_API_ROOT + 'search_text', '')
         return JsonResponse({"text": text})
     return render(request, 'search.html',
+                  context={})
+
+
+def web_search_collocations(request):
+    if request.method == 'POST':
+        searched = request.POST['search_collocations']
+        count = request.POST.get('n')
+        if searched.isalnum():  # на поиске пустых строк и пробелов подвисает, не надо их
+            text = handle_text_to_search(searched, HSE_API_ROOT + 'search_collocations', count)
+            return render(request, 'cat_collocations.html',
+                          context={"items": text, "searched": searched,
+                                   "out": "По запросу {0} нашлись следующие коллокации:".format(searched)})
+        else:
+            return render(request, 'cat_collocations.html',
+                          context={"items": [], "out": "Пустой или некорректный запрос"})
+    return render(request, 'cat_collocations.html',
                   context={})

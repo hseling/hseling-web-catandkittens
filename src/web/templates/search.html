@@ -1,19 +1,113 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CAT</title>
-    <link rel="stylesheet" type="text/css" href="../static/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">CAT - Corpus of Academic Texts</a>
+    <a class="navbar-brand" href=".">CAT - Corpus of Academic Texts</a>
     <a class="nav-link" href="check#">Проверка текста на академичность</a>
     <a class="nav-link" href="collocations#">Словарь коллокаций</a>
 </nav>
+<div class="cat">
+    <img src="{% static 'img/cat9.jpg' %}"/>
+</div>
+<div class="search-corpus">
 <h3>Поиск в корпусе академических текстов</h3>
-<p>Лемма</p>
 
-<h3>Поиск в словаре коллокаций</h3>
+<h4>Поиск точной формы</h4>
+<form class="form-inline my-2 my-lg-0" action="search" method="post">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Введите словоформу" aria-label="Search" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Искать</button>
+</form>
+<h4>Лексико-грамматический поиск</h4>
+<p>Список синтаксических тегов соответствует списку тегов universal dependencies.</p>
+<form class="form-inline my-2 my-lg-0" action="search" method="post">
+    <div class="search-lex-gram">
+    <div class="lemma">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" placeholder="Введите лемму 1" name="lemma">
+    <button class="btn btn-primary btn-lg">Уточнить морфологию</button>
+    </div>
+
+
+    <div class="distance">
+    <p>Расстояние между леммами от
+    <input type=number min="1" max="50" placeholder="1"> до <input type=number min="1" max="50"  placeholder="1"></p>
+    </div>
+
+    <div class="relation">
+    <select class="form-control" name="syntax">
+        <option>Синтаксическое отношение</option>
+        <option>acl: clausal modifier of noun (adjectival clause)</option>
+        <option>advcl: adverbial clause modifier</option>
+        <option>advmod: adverbial modifier</option>
+        <option>amod: adjectival modifier</option>
+        <option>appos: appositional modifier</option>
+        <option>aux: auxiliary</option>
+        <option>auxpass: passive auxiliary</option>
+        <option>case: case marking</option>
+        <option>cc: coordinating conjunction</option>
+        <option>ccomp: clausal complement</option>
+        <option>compound: compound</option>
+        <option>conj: conjunct</option>
+        <option>cop: copula</option>
+        <option>csubj: clausal subject</option>
+        <option>csubjpass: clausal passive subject</option>
+        <option>dep: unspecified dependency</option>
+        <option>det: determiner</option>
+        <option>discourse: discourse element</option>
+        <option>dislocated: dislocated elements</option>
+        <option>dobj: direct object</option>
+        <option>expl: expletive</option>
+        <option>foreign: foreign words</option>
+        <option>goeswith: goes with</option>
+        <option>iobj: indirect object</option>
+        <option>list: list</option>
+        <option>mark: marker</option>
+        <option>mwe: multi-word expression</option>
+        <option>name: name</option>
+        <option>neg: negation modifier</option>
+        <option>nmod: nominal modifier</option>
+        <option>nsubj: nominal subject</option>
+        <option>nsubjpass: passive nominal subject</option>
+        <option>nummod: numeric modifier</option>
+        <option>parataxis: parataxis</option>
+        <option>punct: punctuation</option>
+        <option>remnant: remnant in ellipsis</option>
+        <option>reparandum: overridden disfluency</option>
+        <option>root: root</option>
+        <option>vocative: vocative</option>
+        <option>xcomp: open clausal complement</option>
+    </select>
+    </div>
+
+    <div class="lemma">
+    <input class="form-control mr-sm-2" placeholder="Введите лемму 2" name="lemma">
+    <button class="btn btn-primary btn-lg">Уточнить морфологию</button>
+
+    </div>
+
+    <div class="domain">
+    <select class="form-control" name="search-domain">
+        <option>Предметная область</option>
+        <option>Лингвистика</option>
+        <option>Социология</option>
+        <option>Политология</option>
+        <option>Юриспруденция</option>
+        <option>Психология и педагогика</option>
+        <option>Экономика</option>
+    </select>
+    </div>
+
+    </div>
+    <button class="btn btn-outline-success btn-lg" type="submit">Искать</button>
+</form>
+</div>
 </body>
 </html>

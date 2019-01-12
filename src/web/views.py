@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from django import forms
 import json
-
+from collections import defaultdict
 import requests
 
 HSE_API_ROOT = "http://hse-api-web/"
@@ -108,8 +108,32 @@ def web_collocations(request):
 
 def web_search(request):
     if request.method == 'POST':
-        text = handle_text_to_search(request.POST['search'], HSE_API_ROOT + 'search_text', '')
-        return JsonResponse({"text": text})
+        if request.POST.get('search'):
+            searched = request.POST['search']
+            if searched.isalnum():  # на поиске пустых строк и пробелов подвисает, не надо их
+                text = handle_text_to_search(searched, HSE_API_ROOT + 'search_text', '')
+                texts = dict()
+                for found in text:
+                    if not texts.get(found['id_text']):
+                        texts[found['id_text']] = defaultdict(str)
+                    texts[found['id_text']][found['abs_sent_id']] += (' ' + (found['word']))
+                out = []
+                for k, v in texts.items():
+                    metadata = handle_text_to_search(k, HSE_API_ROOT + 'search_metadata', '')
+                    to_append = {"sents": []}
+                    to_append.update(metadata[0])
+                    for key, val in v.items():
+                        to_append['sents'].append(val.strip())
+                    out.append(to_append)
+                return render(request, 'search_results.html', context={"corpus_search": out,
+                                                                       "outtext": "По запросу {0} нашлись следующие примеры:".format(
+                                                                           searched)})
+            else:
+                return render(request, 'search_results.html', context={"corpus_search": [],
+                                                                       "outtext": "Пустой или некорректный запрос"})
+        else:
+            return render(request, 'search.html',
+                          context={})
     return render(request, 'search.html',
                   context={})
 

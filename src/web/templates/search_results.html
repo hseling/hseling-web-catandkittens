@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAT search results</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href=".">CAT - Corpus of Academic Texts</a>
+    <a class="nav-link" href="check#">Проверка текста на академичность</a>
+    <a class="nav-link" href="collocations#">Словарь коллокаций</a>
+</nav>
+<div class="search-corpus">
+<form method="post" action="search">
+    {% csrf_token %}
+    <button class="btn btn-xs btn-primary" type="submit">Вернуться на страницу поиска</button>
+</form>
+<p>{{outtext}}</p>
+{% for item in corpus_search %}
+    <h6>{{item.author}} {{item.article_name}} // {{item.journal}}, {{item.year}}</h6>
+    <ul class="list-inline">
+        {% for sent in item.sents%}
+        <li>* {{sent}}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+</div>
+</body>
+</html>

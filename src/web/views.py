@@ -152,3 +152,6 @@ def web_search_collocations(request):
                           context={"items": [], "out": "Пустой или некорректный запрос"})
     return render(request, 'cat_collocations.html',
                   context={})
+
+def web_search_morph(request):
+    return render(request,'search_morph.html',context={})

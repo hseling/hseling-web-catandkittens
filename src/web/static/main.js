@@ -27,6 +27,6 @@ $(function () {
       });
     };
 
-    get_status();
-  }
-});
+$(document).ready(function() {
+    $('#collocationTable').DataTable();
+} );

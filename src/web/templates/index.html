@@ -1,12 +1,35 @@
-{% extends 'base.html' %}
-
-{% block menu %}
-<a class="p-2 text-dark" href=".">Index</a>
-<a class="p-2 text-dark" href="upload">Upload &amp; Process</a>
-{% endblock %}
-
-{% block content %}
-<h1 class="display-4">Index</h1>
-<p class="lead">Upload and process some file using HSE API Template by clicking
-<a href="upload">Upload &amp; Process</a> link.</p>
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAT</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+	<a class="navbar-brand" href="index.html">CAT - Corpus of Academic Texts</a>
+    <a class="nav-link" href="cat_check.html">Проверка текста на академичность</a>
+    <a class="nav-link" href="cat_collocations.html">Словарь коллокаций</a>
+</nav>
+<link rel="stylesheet" type="text/css" href="{% static 'css/cat_check.css' %}">
+<div class="description">
+	<h4>О проекте</h4>
+	<p>Корпус академического русского CAT: здесь вы можете проверить свой текст на академичность, а также воспользоваться нашим словарем коллокаций.</p> 
+</div>
+<div class="cats">
+	<img src="{% static 'img/cat1.jpg' %}"/>
+	<img src="{% static 'img/cat2.jpg' %}"/>
+	<img src="{% static 'img/cat3.jpg' %}"/>
+	<img src="{% static 'img/cat4.jpg' %}"/>
+	<img src="{% static 'img/cat5.jpg' %}"/>
+	<img src="{% static 'img/cat6.jpg' %}"/>
+	<img src="{% static 'img/cat7.jpg' %}"/>
+	<img src="{% static 'img/cat8.jpg' %}"/>
+	<img src="{% static 'img/cat9.jpg' %}"/>
+</div>
+</body>
+<script src="{% static 'jquery-3.3.1.js' %}"></script>
+<script src="{% static 'bootstrap.js' %}"></script>
+<script src="{% static 'main.js' %}"></script>
+</html>

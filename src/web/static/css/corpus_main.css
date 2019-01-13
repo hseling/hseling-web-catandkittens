@@ -1,0 +1,10 @@
+.search-corpus {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.cat{
+    position:absolute;
+    right: 10px;
+}

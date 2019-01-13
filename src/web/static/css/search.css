@@ -1,0 +1,34 @@
+.search-corpus {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.cat{
+    position:absolute;
+    right: 10px;
+}
+
+.search-lex-gram {
+    display: flex;
+    background: #CEECF5;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.lemma {
+    margin: 10px;
+}
+
+.distance {
+    margin: 10px;
+}
+
+.relation {
+    margin: 10px;
+}
+
+.domain {
+    margin: 10px;
+}
+

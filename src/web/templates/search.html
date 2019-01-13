@@ -33,9 +33,9 @@
         <div class="search-lex-gram">
             <div class="lemma">
                 {% csrf_token %}
-                <input class="form-control mr-sm-2" placeholder="Введите лемму 1" name="lemma">
+                <input class="form-control mr-sm-2" placeholder="Введите лемму 1" name="lemma1">
 
-                <textarea class="form-control" rows="1" id="morph1" readonly></textarea>
+                <textarea class="form-control" rows="1" name="morph1" id="morph1" readonly></textarea>
 
                 <button class="btn btn-primary" onclick="basicPopup();whichLemma = 1;return false">Уточнить морфологию
                 </button>
@@ -44,8 +44,8 @@
 
             <div class="distance">
                 <p>Расстояние между леммами от
-                    <input type=number min="1" max="50" placeholder="1"> до <input type=number min="1" max="50"
-                                                                                   placeholder="1"></p>
+                    <input type=number min="1" max="50" placeholder="1" name="min"> до <input type=number min="1" max="50"
+                                                                                   placeholder="1" name="max"></p>
             </div>
 
             <div class="relation">
@@ -84,6 +84,7 @@
                     <option>nsubj: nominal subject</option>
                     <option>nsubjpass: passive nominal subject</option>
                     <option>nummod: numeric modifier</option>
+                    <option>obj</option>
                     <option>parataxis: parataxis</option>
                     <option>punct: punctuation</option>
                     <option>remnant: remnant in ellipsis</option>
@@ -95,8 +96,8 @@
             </div>
 
             <div class="lemma">
-                <input class="form-control mr-sm-2" placeholder="Введите лемму 2" name="lemma">
-                <textarea class="form-control" rows="1" id="morph2" readonly></textarea>
+                <input class="form-control mr-sm-2" placeholder="Введите лемму 2" name="lemma2">
+                <textarea class="form-control" rows="1" name="morph2" id="morph2" readonly></textarea>
 
                 <button class="btn btn-primary" onclick="basicPopup();whichLemma = 2;return false">Уточнить морфологию
                 </button>

@@ -106,31 +106,58 @@ def web_collocations(request):
                   context={})
 
 
+def make_sents(text):
+    texts = dict()
+    for found in text:
+        if not texts.get(found['id_text']):
+            texts[found['id_text']] = defaultdict(str)
+        texts[found['id_text']][found['abs_sent_id']] += (' ' + (found['word']))
+    out = []
+    for k, v in texts.items():
+        metadata = handle_text_to_search(k, HSE_API_ROOT + 'search_metadata', '')
+        to_append = {"sents": []}
+        to_append.update(metadata[0])
+        for key, val in v.items():
+            to_append['sents'].append(val.strip())
+        out.append(to_append)
+    return out
+
+
+def lex_gram_search(request):
+    out, searched = [], ''
+    if request.POST['lemma1'].isalnum():  # на поиске пустых строк и пробелов подвисает, не надо их
+        searched = request.POST['lemma1']
+        if request.POST.get('lemma2'):
+            searched += ', {0}'.format('lemma2')
+        text = handle_text_to_search(request.POST, HSE_API_ROOT + 'search_text', '')
+        out = make_sents(text)
+
+    return out, searched
+
+
 def web_search(request):
     if request.method == 'POST':
         if request.POST.get('search'):
             searched = request.POST['search']
             if searched.isalnum():  # на поиске пустых строк и пробелов подвисает, не надо их
                 text = handle_text_to_search(searched, HSE_API_ROOT + 'search_text', '')
-                texts = dict()
-                for found in text:
-                    if not texts.get(found['id_text']):
-                        texts[found['id_text']] = defaultdict(str)
-                    texts[found['id_text']][found['abs_sent_id']] += (' ' + (found['word']))
-                out = []
-                for k, v in texts.items():
-                    metadata = handle_text_to_search(k, HSE_API_ROOT + 'search_metadata', '')
-                    to_append = {"sents": []}
-                    to_append.update(metadata[0])
-                    for key, val in v.items():
-                        to_append['sents'].append(val.strip())
-                    out.append(to_append)
+
+                return render(request, 'search_results.html', context={"corpus_search": make_sents(text),
+                                                                       "outtext": "По запросу {0} нашлись следующие примеры:".format(
+                                                                           searched)})
+            else:
+                return render(request, 'search_results.html', context={"corpus_search": [],
+                                                                       "outtext": "Пустой или некорректный запрос"})
+        elif request.POST.get('lemma1'):
+            out, searched = lex_gram_search(request)
+            if out:
                 return render(request, 'search_results.html', context={"corpus_search": out,
                                                                        "outtext": "По запросу {0} нашлись следующие примеры:".format(
                                                                            searched)})
             else:
                 return render(request, 'search_results.html', context={"corpus_search": [],
                                                                        "outtext": "Пустой или некорректный запрос"})
+
         else:
             return render(request, 'search.html',
                           context={})
@@ -153,5 +180,6 @@ def web_search_collocations(request):
     return render(request, 'cat_collocations.html',
                   context={})
 
+
 def web_search_morph(request):
-    return render(request,'search_morph.html',context={})
+    return render(request, 'search_morph.html', context={})

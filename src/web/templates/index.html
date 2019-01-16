@@ -8,24 +8,23 @@
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
-	<a class="navbar-brand" href=".">CAT - Corpus of Academic Texts</a>
+    <a class="navbar-brand" href=".">CAT - Corpus of Academic Texts</a>
     <a class="nav-link" href="check#">Проверка текста на академичность</a>
     <a class="nav-link" href="collocations#">Словарь коллокаций</a>
 </nav>
-<link rel="stylesheet" type="text/css" href="{% static 'css/cat_check.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 <div class="description">
-	<h4>О проекте</h4>
-	<p>Корпус академического русского CAT: здесь вы можете проверить свой текст на академичность, а также воспользоваться нашим словарем коллокаций.</p> 
-</div>
-<div class="cats">
-	<img src="{% static 'img/cat1.jpg' %}"/>
-	<img src="{% static 'img/cat2.jpg' %}"/>
-	<img src="{% static 'img/cat3.jpg' %}"/>
-	<img src="{% static 'img/cat4.jpg' %}"/>
-	<img src="{% static 'img/cat5.jpg' %}"/>
-	<img src="{% static 'img/cat6.jpg' %}"/>
-	<img src="{% static 'img/cat7.jpg' %}"/>
-	<img src="{% static 'img/cat8.jpg' %}"/>
+    <h4>О проекте</h4>
+    <p>Корпус академического русского CAT: здесь вы можете проверить свой текст на академичность, а также
+        воспользоваться нашим словарем коллокаций.</p>
+    <a href="main#">Описание корпуса</a>
+    <a href="search#">Поиск в корпусе</a>
+    <div class="cats">
+        <img src="{% static 'img/cat1.jpg' %}"/>
+        <img src="{% static 'img/cat2.jpg' %}"/>
+        <img src="{% static 'img/cat5.jpg' %}"/>
+        <img src="{% static 'img/cat6.jpg' %}"/>
+    </div>
 </div>
 </body>
 <script src="{% static 'jquery-3.3.1.js' %}"></script>

@@ -4,6 +4,12 @@
     margin: 10px;
 }
 
+.collocations-text{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
 .check-button {
     display: flex;
     margin: 10px;

@@ -11,12 +11,7 @@
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href=".">CAT - Corpus of Academic Texts</a>
     <a class="nav-link" href="check#">Проверка текста на академичность</a>
-    <form class="form-inline my-2 my-lg-0" action="search_collocations" method="post">
-        {% csrf_token %}
-        <input class="form-control mr-sm-2" type="search" placeholder="Поиск по словарю коллокаций" aria-label="Search"
-               name="search_collocations">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Искать</button>
-    </form>
+    <a class="nav-link" href="collocations#">Словарь коллокаций</a>
 </nav>
 <link rel="stylesheet" type="text/css" href="{% static 'css/cat_check.css' %}">
 <div class="collocations">

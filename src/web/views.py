@@ -102,15 +102,6 @@ def web_intext(request):
     if request.method == 'POST':
         task_id = handle_text_to_check(request.POST['paste_text'])
         if task_id:
-            # url = HSE_API_ROOT + "status/" + task_id
-            # ready=False
-            # content = requests.get(url)
-            # result = content.json()
-            # while not ready:
-            #     content = requests.get(url)
-            #     result = content.json()
-            #     ready = result['ready']
-            # return JsonResponse(result)
             return HttpResponseRedirect('check?task_id=' + task_id)
 
         else:

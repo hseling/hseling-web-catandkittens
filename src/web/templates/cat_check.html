@@ -4,79 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <title>CAT</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="../static/node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="index.html">CAT - Corpus of Academic Texts</a>
-    <a class="nav-link" href="cat_collocations.html">Словарь коллокаций</a>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Поиск по корпусу" aria-label="Search">
+
+    <a class="navbar-brand" href=".">CAT - Corpus of Academic Texts</a>
+    <a class="nav-link" href="collocations#">Словарь коллокаций</a>
+    <form class="form-inline my-2 my-lg-0" action="search" method="post">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Поиск по корпусу" aria-label="Search"
+               name="search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Искать</button>
     </form>
 
 </nav>
-<link rel="stylesheet" type="text/css" href="{% static 'css/cat_check.css' %}">
-<div class="check">
+<link rel="stylesheet" type="text/css" href="../static/css/cat_check.css">
+
+<div class="check" id="check1">
     <h3>Проверка текста на академичность</h3>
+</div>
+<div class="check-cat" id="check2">
     <div class="check">
-        <h6>Загрузить текст:</h6>
-        <form>
-            <div class="form-group">
-                <label for="FormControlFile">Загрузите файл в формате *.pdf или *.txt</label>
-                <input type="file" class="form-control-file" id="FormControlFile">
+        <p> Этот инструмент позволит вам узнать, насколько ваша работа соответствует нормам академического письма
+            (научному
+            стилю).</p>
+        <h4>Введите текст:</h4>
+
+
+        <form action="intext" method="post">
+            {% csrf_token %}
+            <textarea class="form-control" rows="5" placeholder="Введите текст" name="paste_text"></textarea>
+            <div class="check">
+                <button type="submit" class="btn btn-primary btn-lg">Проверить</button>
             </div>
         </form>
-        <p>или введите текст:</p>
-        <textarea class="form-control" rows="5" placeholder="Введите текст"></textarea>
+
     </div>
-    <div class="check">
-        <h6>Проверять на следующие типы ошибок:</h6>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="Check1" checked>
-            <label class="form-check-label" for="Check1">
-                длинные цепочки родительных падежей
-            </label><br>
-            <input class="form-check-input" type="checkbox" value="" id="Check2" checked>
-            <label class="form-check-label" for="Check2">
-                ошибки в сравнительной степени
-            </label><br>
-            <input class="form-check-input" type="checkbox" value="" id="Check3" checked>
-            <label class="form-check-label" for="Check3">
-                силлепсис
-            </label><br>
-            <input class="form-check-input" type="checkbox" value="" id="Check4" checked>
-            <label class="form-check-label" for="Check4">
-                ошибки в наклонении глагола
-            </label><br>
-            <input class="form-check-input" type="checkbox" value="" id="Check5" checked>
-            <label class="form-check-label" for="Check5">
-                ошибки в личных местоимениях
-            </label><br>
-            <input class="form-check-input" type="checkbox" value="" id="Check6" checked>
-            <label class="form-check-label" for="Check6">
-                слова неакадемического стиля
-            </label><br>
-        </div>
-    </div>
-    <div class="check">
-        <h6>Выбрать предметную область (если не выбрана, будет определена автоматически):</h6>
-        <select class="form-control">
-            <option>Предметная область не выбрана</option>
-            <option>Лингвистика</option>
-            <option>Социология</option>
-            <option>Политология</option>
-            <option>Юриспруденция</option>
-            <option>Психология и педагогика</option>
-            <option>Экономика</option>
-        </select>
-    </div>
-    <div class="check-button">
-        <button type="button" class="btn btn-primary btn-lg">Проверить</button>
+    <div style="flex-grow: 0">
+        <img src="{% static 'img/cat8.jpg' %}"/>
     </div>
 </div>
+
+
+<script id="catImage" type="text/html">
+    <img src="{% static 'img/cat7.jpg' %}"/>
+</script>
+<script id="backButton" type="text/html">
+<div class="cat">
+    <h4>Объяснение разметки:</h4>
+    <span style="background-color: #DEB887">Повелительное наклонение</span>
+    <span style="background-color: #BC8F8F">Сослагательное наклонение</span>
+    <span style="background-color: #FFE4E1">Слово неакадемического стиля</span>
+    <b><font color="#A52A2A">Длинная генитивная цепочка</font></b>
+    <span style="background-color: #66CDAA">Ошибка в сравнительной степени</span>
+    <span style="background-color: #228B22">Неудачная сочинительная группа</span>
+    <b><font color="#8B008B">Неудачные личное местоимение</font></b>
+    <div class="check">
+        <form method="post" action="check">
+            {% csrf_token %}
+            <button class="btn btn-xs btn-primary" type="submit">Вернуться к проверке</button>
+        </form>
+    </div>
+    </div>
+</script>
+
+
 </body>
-<script src="{% static 'jquery-3.3.1.js' %}"></script>
-<script src="{% static 'bootstrap.js' %}"></script>
-<script src="{% static 'main.js' %}"></script>
+<script src="{% static "node_modules/jquery/dist/jquery.min.js" %}"></script>
+<script src="{% static "cat_check.js" %}"></script>
 </html>

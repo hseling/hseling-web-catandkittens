@@ -72,7 +72,8 @@ def handle_text_to_check(t):
     url = HSE_API_ROOT + "input_text"
     text = {"text": t}
     content = requests.post(url, json=json.dumps(text), headers={'content-type': 'application/json'})
-    return content.json()['input_text']
+    content_json = content.json()
+    return content_json.get('input_text') # task id
 
 
 def handle_file_to_check(f):
@@ -99,9 +100,14 @@ def handle_text_to_search(postdata, url):
 
 def web_intext(request):
     if request.method == 'POST':
-        text = handle_text_to_check(request.POST['paste_text'])
-        return JsonResponse({"text": text})
+        task_id = handle_text_to_check(request.POST['paste_text'])
+        if task_id:
+            return HttpResponseRedirect('check?task_id=' + task_id)
 
+        else:
+            return JsonResponse({"error": "No task id"})
+    else:
+        return web_check(request)
 
 def web_check(request):
     return render(request, 'cat_check.html',

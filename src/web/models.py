@@ -39,3 +39,24 @@ class CollocationFile(models.Model):
     def save(self, request):
         task_id = handle_uploaded_file(request.FILES['collocations'])
         return HttpResponseRedirect('main?task_id=' + task_id)
+
+class Word2VecFile(models.Model):
+    """
+    Модель Word2Veс. 3 файла: модель, syn1neg.npy, vectors.npy
+    """
+    model = models.FileField()
+    syn1neg = models.FileField()
+    vectors = models.FileField()
+
+    def save(self, request):
+        for file in request.FILES.values():
+            handle_uploaded_file(file)
+
+class UDPipeFile(models.Model):
+    """
+    Модель UDPipe (*.udpipe)
+    """
+    model = models.FileField()
+    def save(self, request):
+        task_id = handle_uploaded_file(request.FILES['model'])
+        return HttpResponseRedirect('main?task_id=' + task_id)

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAT</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+    <script type="text/javascript" src="{% static 'dropdown_checkboxes.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href=".">CAT - Corpus of Academic Texts</a>
+    <a class="nav-link" href="check#">Проверка текста на академичность</a>
+    <form class="form-inline my-2 my-lg-0" action="search" method="post">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Поиск по корпусу" aria-label="Search" name="search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Искать</button>
+    </form>
+</nav>
+
+<div class="search-corpus">
+    <h3>Поиск по коллокациям</h3>
+    <div class="collocations-cat">
+    <div class="collocations-description">
+    <p>Списки коллокаций включают в себя словосочетания длиной от двух до шести токенов, извлечённые из текстов Корпуса. Для каждого сочетания посчитаны следующие метрики для определения степени его устойчивости в академической речи:</p>
+    </div>
+        <div class="cat">
+    <img src="{% static 'img/cat4.jpg' %}"/>
+</div>
+    <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information">PMI</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Student%27s_t-test">t score</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Likelihood-ratio_test">Likelihood ratio</a></li>
+        <li>Абсолютная частота</li>
+        <li>Относительная частота</li>
+    </ul></div>
+    <form class="form-inline my-2 my-lg-0" action="search_collocations" method="post">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Введите словоформу" aria-label="Search"
+               name="search_collocations">
+
+            <div class="domain">
+                <select class="form-control" name="search-domain">
+                    <option>Лингвистика</option>
+                    <option>Социология</option>
+                    <option>Политология</option>
+                    <option>Юриспруденция</option>
+                    <option>Психология и педагогика</option>
+                    <option>Экономика</option>
+                </select>
+            </div>
+
+        <button class="btn btn-outline-success btn-lg" type="submit">Искать</button>
+    </form>
+</div>
+</body>
+</html>

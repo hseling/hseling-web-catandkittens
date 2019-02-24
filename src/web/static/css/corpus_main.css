@@ -1,0 +1,16 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.data-description {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.cat{
+    position:absolute;
+    right: 10px;
+}

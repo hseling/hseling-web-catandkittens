@@ -25,8 +25,21 @@ $(function () {
           setTimeout(get_status, 2000);
         }
       });
-    };
+    }
+    }
+    });
 
 $(document).ready(function() {
-    $('#collocationTable').DataTable();
+    $('#collocationTable').DataTable({
+      "oLanguage": {
+      "sLengthMenu": "Отображать _MENU_ коллокаций",
+      "sSearch": "Поиск по таблице",
+      "sInfo": "Коллокации _START_ - _END_ из _TOTAL_ найденных",
+      "oPaginate": {
+        "sPrevious": "Предыдущая страница ", // This is the link to the previous page
+        "sNext": " Следующая страница", // This is the link to the next page
+        }
+    }
+    });
+
 } );

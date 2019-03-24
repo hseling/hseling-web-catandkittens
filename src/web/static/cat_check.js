@@ -35,7 +35,7 @@ $(function () {
     loader_div.appendChild(loader_img);
     var get_status = function () {
 
-      $.get("/web/status?task_id=" + task_id, function(data) {
+      $.get("status?task_id=" + task_id, function(data) {
         if (data.ready) {
           check_parent.removeChild(loader_div);
           var check_result = document.createElement("div");

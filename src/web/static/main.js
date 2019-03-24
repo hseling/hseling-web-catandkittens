@@ -17,7 +17,7 @@ $(function () {
 
   if(task_id) {
     var get_status = function () {
-      $.get("/web/status?task_id=" + task_id, function(data) {
+      $.get("status?task_id=" + task_id, function(data) {
         if (data.ready) {
           $(".lead").text(data.result);
           $(".raw").text(data.raw);

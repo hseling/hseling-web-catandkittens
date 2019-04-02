@@ -1,7 +1,7 @@
 #!/bin/sh
 /opt/code/db/start_postgres.sh
 echo 'Migrating DB'
-python3 manage.py migrate -v 3
+python3 manage.py migrate
 
 echo 'Migrating to test DB'
 # Copy the database, so we don't run migrations twice

@@ -11,4 +11,9 @@ echo 'Loading fixtures'
 # Note the fixtures are not loaded into the test DB
 python3 manage.py loaddata ./*/fixtures/*
 
+python3 manage.py shell -c "from django.contrib.auth import get_user_model; \
+ User = get_user_model(); User.objects.create_superuser(username=os.environ.get('DJANGO_ADMIN_NAME'), \
+   email=os.environ.get('DJANGO_ADMIN_EMAIL'), \
+   password=os.environ.get('DJANGO_ADMIN_PASSWORD'))"
+
 /opt/code/db/stop_postgres.sh

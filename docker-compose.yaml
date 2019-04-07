@@ -69,6 +69,9 @@ services:
     - POSTGRES_PORT=5432
     # Remember to keep this consistent
     - django_secret_key=secret_key!
+    - DJANGO_ADMIN_NAME=hello
+    - DJANGO_ADMIN_EMAIL=hello@example.com
+    - DJANGO_ADMIN_PASSWORD=hello
  log:
   env_file: environment.env
   build:

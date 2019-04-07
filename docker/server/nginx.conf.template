@@ -55,6 +55,10 @@ server {
         proxy_set_header X-Real-IP ${DOLLAR}remote_addr;
 		uwsgi_pass unix:///tmp/uwsgi.sock;
 		include uwsgi_params;
+		proxy_send_timeout 1200;
+        proxy_read_timeout 1200;
+        uwsgi_send_timeout 1200;
+        uwsgi_read_timeout 1200;
 	}
 
 }

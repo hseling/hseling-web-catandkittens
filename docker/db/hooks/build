@@ -7,7 +7,6 @@ docker build \
        --build-arg auth=$AUTH \
        --build-arg branch=$BRANCH \
        --build-arg django_secret_key=$DJANGO_SECRET_KEY \
-       --build-arg django_secret_key=$DJANGO_SECRET_KEY \
        --build-arg POSTGRES_DB=$POSTGRES_DB \
        --build-arg POSTGRES_USER=$POSTGRES_USER \
        --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD \

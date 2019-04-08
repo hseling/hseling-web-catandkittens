@@ -4,13 +4,13 @@
     margin: 10px;
 }
 
-.data-description {
+.cat{
     display: flex;
-    flex-direction: column;
-    margin: 10px;
+    justify-content: space-between;
+
 }
 
-.cat{
-    position:absolute;
-    right: 10px;
+.list-and-size{
+    display: flex;
+    flex-direction: column;
 }
